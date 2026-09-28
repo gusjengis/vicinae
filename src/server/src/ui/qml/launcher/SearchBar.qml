@@ -41,12 +41,15 @@ Item {
             }
         }
 
-        ViciImage {
+        Text {
             visible: !Launcher.showBackButton && Launcher.searchInteractive
-            Layout.preferredWidth: 26
-            Layout.preferredHeight: 26
             Layout.alignment: Qt.AlignVCenter
-            source: Img.icon(BuiltinIcon.MagnifyingGlass).withFillColor(Theme.textMuted)
+            // Match Quickshell's SF Pro magnifyingglass symbol.
+            text: String.fromCodePoint(0x1002AB)
+            font.family: "SF Pro"
+            font.pixelSize: 20
+            font.weight: Font.Medium
+            color: Theme.textMuted
         }
 
         Item {
