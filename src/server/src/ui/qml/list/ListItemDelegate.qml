@@ -5,7 +5,7 @@ import Vicinae
 
 SelectableDelegate {
     id: root
-    height: 38
+    height: featured ? 52 : 38
 
     Accessible.role: Accessible.ListItem
     Accessible.name: itemTitle
@@ -16,6 +16,7 @@ SelectableDelegate {
     required property string itemTitle
     required property string itemSubtitle
     required property string itemIconSource
+    property bool featured: false
     required property string itemAlias
     property var itemShortcutTokens: []
     required property bool itemIsActive
@@ -30,8 +31,8 @@ SelectableDelegate {
 
         Item {
             visible: root.itemIconSource !== ""
-            Layout.preferredWidth: 26
-            Layout.preferredHeight: 26
+            Layout.preferredWidth: root.featured ? 32 : 26
+            Layout.preferredHeight: root.featured ? 32 : 26
             Layout.alignment: Qt.AlignVCenter
 
             ViciImage {
@@ -71,7 +72,8 @@ SelectableDelegate {
                 width: Math.min(implicitWidth, textRow.availableForText - textRow.subtitleReserved)
                 text: root.itemTitle
                 color: root.selected ? root.appearance.selectedText : root.hovered ? root.appearance.hoveredText : Theme.foreground
-                font.pointSize: Theme.regularFontSize
+                font.pointSize: root.featured ? Theme.regularFontSize * 1.14 : Theme.regularFontSize
+                font.weight: root.featured ? Font.DemiBold : Font.Normal
                 elide: Text.ElideRight
                 maximumLineCount: 1
             }

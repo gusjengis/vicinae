@@ -74,6 +74,7 @@ GenericListView {
                 itemTitle: delegateLoader.title
                 itemSubtitle: delegateLoader.subtitle
                 itemIconSource: delegateLoader.iconSource
+                featured: delegateLoader.index === searchListView.cmdModel.nextSelectableIndex(-1, 1)
                 itemAlias: delegateLoader.alias
                 itemShortcutTokens: delegateLoader.shortcutTokens
                 itemIsActive: delegateLoader.isActive

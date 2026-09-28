@@ -59,7 +59,7 @@ RowLayout {
         Layout.preferredWidth: 25
         Layout.preferredHeight: 25
         Layout.alignment: Qt.AlignVCenter
-        source: root.icon
+        source: root.icon.startsWith("icon://omnicast/") || root.icon.startsWith("icon://builtin/") ? Img.parse(root.icon).withBackgroundTint("transparent").withFillColor(Theme.foreground) : root.icon
     }
 
     Repeater {

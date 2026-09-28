@@ -7,7 +7,7 @@ Item {
     id: root
     required property Item commandView
     property int horizontalPadding: 16
-    property real textSize: Theme.regularFontSize * 1.2
+    property int textSize: 22
     property bool flatAccessories: false
 
     function focusInput() {
@@ -21,7 +21,7 @@ Item {
         anchors.fill: parent
         anchors.leftMargin: root.horizontalPadding
         anchors.rightMargin: root.horizontalPadding
-        spacing: Launcher.hasCompleter ? 4 : 12
+        spacing: 12
 
         ViciImage {
             id: backButton
@@ -39,6 +39,14 @@ Item {
             TapHandler {
                 onTapped: Launcher.goBack()
             }
+        }
+
+        ViciImage {
+            visible: !Launcher.showBackButton && Launcher.searchInteractive
+            Layout.preferredWidth: 22
+            Layout.preferredHeight: 22
+            Layout.alignment: Qt.AlignVCenter
+            source: Img.icon(BuiltinIcon.MagnifyingGlass).withFillColor(Theme.textMuted)
         }
 
         Item {
@@ -60,7 +68,7 @@ Item {
                 anchors.fill: parent
                 verticalAlignment: TextInput.AlignVCenter
                 font.family: Theme.fontFamily
-                font.pointSize: root.textSize
+                font.pixelSize: root.textSize
                 color: Theme.foreground
                 selectionColor: Theme.textSelectionBg
                 selectedTextColor: Theme.textSelectionFg

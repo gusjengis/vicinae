@@ -24,7 +24,10 @@ ImageUrl ImageUrl::withFallback(const ImageUrl &fb) const {
 ImageUrl ImageUrl::withBackgroundTint(const QString &tint) const {
   ImageURL copy = m_url;
   auto color = ImageURL::tintForName(tint);
-  if (color != SemanticColor::InvalidTint) copy.setBackgroundTint(color);
+  if (color != SemanticColor::InvalidTint)
+    copy.setBackgroundTint(color);
+  else if (QColor const literal(tint); literal.isValid())
+    copy.setBackgroundTint(literal);
   return ImageUrl(std::move(copy));
 }
 

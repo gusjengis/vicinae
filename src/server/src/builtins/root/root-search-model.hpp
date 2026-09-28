@@ -26,6 +26,7 @@ public:
   explicit RootSearchModel(const ViewScope &scope, QObject *parent = nullptr);
 
   Q_INVOKABLE void setFilter(const QString &text);
+  QVariant data(const QModelIndex &index, int role) const override;
   void setSelectedIndex(int index) override;
 
   const RootItem *selectedRootItem() const;

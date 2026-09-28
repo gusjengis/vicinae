@@ -7,6 +7,7 @@
 #include "services/files-service/file-service.hpp"
 #include "services/news/news-service.hpp"
 #include "theme/theme.hpp"
+#include <QColor>
 #include <filesystem>
 #include <utility>
 
@@ -73,6 +74,16 @@ RootSearchModel::RootSearchModel(const ViewScope &scope, QObject *parent)
   addSource(m_fallbackSource);
 
   setFilter({});
+}
+
+QVariant RootSearchModel::data(const QModelIndex &index, int role) const {
+  auto value = SectionListModel::data(index, role);
+  if (role != IconSource || !value.isValid()) return value;
+
+  ImageURL icon(value.toString());
+  if (!icon.isBuiltin()) return value;
+  icon.setBackgroundTint(QColor(Qt::transparent)).setFill(SemanticColor::Foreground);
+  return icon.toString();
 }
 
 void RootSearchModel::setFilter(const QString &text) {
