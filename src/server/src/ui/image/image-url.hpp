@@ -8,6 +8,7 @@ class ImageUrl {
   Q_GADGET
   QML_VALUE_TYPE(imageUrl)
   Q_PROPERTY(bool valid READ isValid)
+  Q_PROPERTY(bool isBuiltin READ isBuiltin)
   Q_PROPERTY(bool isThemeSensitive READ isThemeSensitive)
 
 public:
@@ -21,6 +22,7 @@ public:
 
   const ImageURL &imageUrl() const;
   bool isValid() const;
+  bool isBuiltin() const { return m_url.isBuiltin(); }
   bool isThemeSensitive() const;
 
   bool operator==(const ImageUrl &other) const { return m_url.toString() == other.m_url.toString(); }

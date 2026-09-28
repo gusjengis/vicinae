@@ -38,7 +38,7 @@ Item {
             id: navIcon
             width: 20
             height: 20
-            source: root.clickable ? Img.icon(BuiltinIcon.Vicinae).withFillColor(Theme.textMuted) : Launcher.navigationIcon
+            source: root.clickable ? Img.icon(BuiltinIcon.Vicinae).withFillColor(Theme.textMuted) : Launcher.navigationIcon.isBuiltin ? Launcher.navigationIcon.withBackgroundTint("transparent").withFillColor(Theme.textMuted) : Launcher.navigationIcon
             visible: root.showIcon && (root.clickable || Launcher.navigationIcon.valid)
             anchors.verticalCenter: parent.verticalCenter
         }
