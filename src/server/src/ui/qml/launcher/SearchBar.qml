@@ -43,8 +43,8 @@ Item {
 
         ViciImage {
             visible: !Launcher.showBackButton && Launcher.searchInteractive
-            Layout.preferredWidth: 22
-            Layout.preferredHeight: 22
+            Layout.preferredWidth: 26
+            Layout.preferredHeight: 26
             Layout.alignment: Qt.AlignVCenter
             source: Img.icon(BuiltinIcon.MagnifyingGlass).withFillColor(Theme.textMuted)
         }
