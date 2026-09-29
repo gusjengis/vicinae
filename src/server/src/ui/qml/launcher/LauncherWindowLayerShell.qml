@@ -26,10 +26,12 @@ LauncherWindow {
         visible: shell.visible
         screen: shell.screen
         width: screen.width
-        height: screen.height
+        height: screen.height - 37
         color: "transparent"
         flags: Qt.FramelessWindowHint
-        LayerShell.Window.anchors: LayerShell.Window.AnchorTop | LayerShell.Window.AnchorBottom | LayerShell.Window.AnchorLeft | LayerShell.Window.AnchorRight
+        LayerShell.Window.anchors: LayerShell.Window.AnchorTop | LayerShell.Window.AnchorLeft | LayerShell.Window.AnchorRight
+        // Quickshell's menu bar occupies top 37px; keep its Spotlight button clickable.
+        LayerShell.Window.margins.top: 37
         LayerShell.Window.scope: "vicinae-dismiss"
         LayerShell.Window.layer: LayerShell.Window.LayerTop
         LayerShell.Window.keyboardInteractivity: LayerShell.Window.KeyboardInteractivityNone

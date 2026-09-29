@@ -350,14 +350,8 @@ void NavigationController::setWindowActivated(bool value) {
 
 void NavigationController::toggleWindow() {
   if (m_windowOpened) {
-    if (m_windowActivated) {
-      closeWindow();
-      return;
-    }
-
-    // if window was not activated, we reactivate it by closing then showing (most reliable way to ensure
-    // reactivation)
     closeWindow();
+    return;
   }
 
   showWindow();
