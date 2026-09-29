@@ -15,7 +15,7 @@ Item {
             Layout.fillHeight: true
 
             FooterNavStatus {
-                visible: !Launcher.toastActive
+                visible: !Launcher.toastActive && !Launcher.atRoot
                 clickable: Launcher.atRoot
                 availableWidth: parent.width
                 anchors.verticalCenter: parent.verticalCenter

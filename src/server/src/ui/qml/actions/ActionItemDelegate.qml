@@ -63,7 +63,7 @@ Item {
 
             ViciImage {
                 anchors.fill: parent
-                source: root.iconSource
+                source: root.iconSource.startsWith("icon://omnicast/") || root.iconSource.startsWith("icon://builtin/") ? Img.parse(root.iconSource).withBackgroundTint("transparent").withFillColor(root.isDanger ? Theme.danger : Theme.foreground) : root.iconSource
             }
         }
 
